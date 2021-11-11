@@ -22,10 +22,10 @@ main(){
     // 通过pipe发送父进程的pid给子进程
     ppid = getpid();
     fprintf(fds[1], "%d", ppid);
-    wait(0);
-
+    int *status = (int *)0;
+    int childProcessID = wait(status);
     read(fds[0], buf, sizeof buf);
-    fprintf(1, "%d: received pong\n", atoi(buf));
+    fprintf(1, "%d: received pong\n", childProcessID);
   }
   exit(0);
 }
