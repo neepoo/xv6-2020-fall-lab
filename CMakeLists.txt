@@ -70,4 +70,4 @@ add_executable(xv6_labs_2020
         user/user.h
         user/usertests.c
         user/wc.c
-        user/zombie.c user/sleep.c user/pingpong.c user/primes.c)
+        user/zombie.c user/sleep.c user/pingpong.c user/primes.c user/find.c)
