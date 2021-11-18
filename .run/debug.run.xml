@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="debug" type="CLion_Remote" singleton="false" version="1" remoteCommand="localhost:26000" symbolFile="$PROJECT_DIR$/kernel/kernel" sysroot="$PROJECT_DIR$">
+    <debugger kind="GDB">/usr/bin/riscv64-linux-gnu-gdb</debugger>
+    <method v="2" />
+  </configuration>
+</component>
