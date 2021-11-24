@@ -7,6 +7,7 @@
 #include "spinlock.h"
 #include "proc.h"
 #include "syscall.h"
+#include "sysinfo.h"
 
 uint64
 sys_exit(void) {
@@ -103,5 +104,16 @@ uint64 sys_trace(void) {
 }
 
 uint64 sys_sysinfo(void) {
+	// 先获取sysinfo struct addr
+	struct sysinfo si;
+	uint64 siAddr;
+	if(argaddr(0, &siAddr) < 0)
+		return -1;
+	struct proc *p = myproc();
+	si.freemem=freeMemSize();
+	si.nproc=procNum();
+//	printf("IN KERNEL addr: %p, memSize: %d, procNum: %d\n", &siAddr, si.freemem, si.nproc);
+	if (copyout(p->pagetable, siAddr, (char *)&si, sizeof(si)) < 0)
+		return -1;
 	return 0;
 }
