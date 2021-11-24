@@ -70,4 +70,5 @@ add_executable(xv6_labs_2020
         user/user.h
         user/usertests.c
         user/wc.c
+        user/trace.c
         user/zombie.c)
