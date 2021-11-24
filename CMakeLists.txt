@@ -71,4 +71,5 @@ add_executable(xv6_labs_2020
         user/usertests.c
         user/wc.c
         user/trace.c
+        user/sysinfotest.c
         user/zombie.c)
