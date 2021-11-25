@@ -1,12 +1,27 @@
 # Context switch
 #
 #   void swtch(struct context *old, struct context *new);
-# 
+#   a0:old a1:new
 # Save current registers in old. Load from new.	
+# https://msyksphinz-self.github.io/riscv-isadoc/html/rv64i.html#sd
+# Register	ABI Name	Description	Saver
+# x0	zero	hardwired zero	-
+# x1	ra	return address	Caller
+# x2	sp	stack pointer	Callee
+# x3	gp	global pointer	-
+# x4	tp	thread pointer	-
+# x5-7	t0-2	temporary registers	Caller
+# x8	s0 / fp	saved register / frame pointer	Callee
+# x9	s1	saved register	Callee
+# x10-11	a0-1	function arguments / return values	Caller
+# x12-17	a2-7	function arguments	Caller
+# x18-27	s2-11	saved registers	Callee
+# x28-31	t3-6	temporary registers	Caller
 
 
 .globl swtch
 swtch:
+# ra -> 0(a0)
         sd ra, 0(a0)
         sd sp, 8(a0)
         sd s0, 16(a0)
