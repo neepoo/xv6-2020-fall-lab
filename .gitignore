@@ -24,3 +24,4 @@ ph
 barrier
 .idea
 cmake-build-debug
+.vscode
